@@ -481,3 +481,53 @@ header .main-nav .other:hover .mega-nav {
   animation-duration: var(--main-transsion);
   animation-iteration-count: infinite;
 }
+
+@keyframes liAnimate {
+  from {
+    width: 0;
+  }
+
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes mega {
+  from {
+    width: 0;
+  }
+
+  to {
+    width: 90%;
+  }
+}
+
+@keyframes arrow-link {
+  0% {
+    bottom: 60px;
+  }
+
+  100% {
+    bottom: 40px;
+  }
+}
+
+@keyframes land-img {
+  0% {
+    top: -50px;
+  }
+
+  100% {
+    top: -25px;
+  }
+}
+
+@keyframes arrow {
+  from {
+    left: 43%;
+  }
+
+  to {
+    left: 40%;
+  }
+}
