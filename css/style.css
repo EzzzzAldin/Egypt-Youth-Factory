@@ -1,0 +1,483 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --main-color: #2196f3;
+  --main-color-alt: #1787e0;
+  --main-padding-top: 100px;
+  --main-padding-bottom: 100px;
+  --white: #fff;
+  --main-transsion: 0.8s;
+  --background-section: #ececec;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Cairo", sans-serif;
+  background-color: #fff;
+}
+
+.container {
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Small */
+@media (min-width: 768px) {
+  .container {
+    width: 750px;
+  }
+}
+/* Medium */
+@media (min-width: 992px) {
+  .container {
+    width: 970px;
+  }
+}
+/* Large */
+@media (min-width: 1200px) {
+  .container {
+    width: 1170px;
+  }
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+.main-title {
+  text-align: center;
+  font-size: 30px;
+  font-weight: bold;
+  border: 2px solid #000;
+  width: fit-content;
+  padding: 10px;
+  position: relative;
+  transition: background-color 1.8s, color 2s, border 2s;
+  margin: 0 auto 80px;
+}
+
+.main-title::before,
+.main-title::after {
+  content: "";
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  background-color: var(--main-color);
+  border-radius: 50%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.main-title::before {
+  left: -15%;
+  transition: left var(--main-transsion), background-color 1.5s, all 1s;
+}
+
+.main-title::after {
+  right: -15%;
+  transition: right var(--main-transsion), background-color 1.5s, all 1s;
+}
+
+.main-title:hover::before {
+  left: 40%;
+  width: 50%;
+  height: 100%;
+  border-radius: 0;
+  top: 50%;
+  background-color: transparent;
+}
+
+.main-title:hover::after {
+  right: 40%;
+  width: 50%;
+  height: 100%;
+  border-radius: 0;
+  top: 50%;
+  background-color: transparent;
+}
+
+.main-title:hover {
+  background-color: var(--main-color);
+  color: var(--white);
+  border: 2px solid var(--main-color);
+}
+
+.spikes {
+  position: relative;
+}
+
+.spikes::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  width: 100%;
+  height: 30px;
+  z-index: 1;
+  background-image: linear-gradient(135deg, #fff 25%, transparent 25%),
+    linear-gradient(225deg, #fff 25%, transparent 25%);
+  background-size: 30px 30px;
+}
+
+header {
+  background-color: var(--white);
+  position: relative;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.logo,
+.logo > a {
+  font-size: 26px;
+  font-weight: bold;
+  height: 72px;
+  color: var(--main-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  margin-top: 52px;
+  z-index: 5;
+}
+
+.logo img {
+  max-width: 100%;
+}
+
+@media (max-width: 767px) {
+  .logo,
+  .logo > a {
+    width: 100%;
+    height: 50px;
+  }
+}
+
+header .main-nav,
+header .main-nav ul {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--main-color);
+  flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+  header .main-nav ul {
+    margin: auto;
+  }
+}
+
+header .main-nav ul li {
+  padding: 28px 15px;
+  color: black;
+  cursor: pointer;
+  transition: var(--main-transsion);
+  position: relative;
+}
+
+header .main-nav ul li a {
+  color: #000;
+  font-size: 20px;
+}
+
+@media (max-width: 768px) {
+  header .main-nav ul li {
+    padding: 10px 18px;
+  }
+
+  header .main-nav ul li a {
+    font-size: 25px;
+  }
+}
+
+header .main-nav ul li::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 4%;
+  transition: var(--main-transsion);
+  background-color: var(--main-color);
+  left: 0;
+  top: 0;
+  display: none;
+  animation-name: liAnimate;
+  animation-duration: var(--main-transsion);
+  animation-iteration-count: initial;
+}
+
+header .main-nav ul li:hover {
+  color: var(--main-color);
+  background-color: #eee;
+}
+
+header .main-nav ul li:hover::after {
+  display: block;
+}
+
+/* Style Of mega-nav */
+header .main-nav ul .other {
+  position: static;
+}
+
+header .main-nav ul .other .mega-nav .mega-img img {
+  max-width: 100%;
+}
+
+header .main-nav ul .other .mega-nav {
+  position: absolute;
+  left: 4%;
+  background-color: var(--white);
+  width: 90%;
+  display: flex;
+  z-index: -1;
+  padding: 30px;
+  justify-content: space-evenly;
+  border-top: 1px solid #ececec;
+  top: calc(100% + 50px);
+  border-bottom: 3px solid var(--main-color);
+  opacity: 0;
+  transition: top 0.3s, opactiy 0.3s;
+}
+
+header .main-nav ul .other .mega-nav ul {
+  margin-top: 7px;
+  display: block;
+  min-width: 240px;
+  flex: 1;
+}
+
+header .main-nav ul .other .mega-nav li,
+header .main-nav ul .other .mega-nav li a {
+  padding: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: var(--main-transsion);
+  color: var(--main-color);
+  border-bottom: 1px solid #ececec;
+  position: relative;
+}
+
+header .main-nav ul .other .mega-nav li i {
+  margin: 8px;
+}
+
+@media (max-width: 991px) {
+  header .main-nav ul .other .mega-nav .mega-img img {
+    display: none;
+  }
+}
+
+header .main-nav ul .other .mega-nav li::after {
+  content: "";
+  position: absolute;
+  background-color: rgb(238 238 238 / 20%);
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  display: none;
+  animation-name: liAnimate;
+  animation-duration: 0.5s;
+  animation-iteration-count: initial;
+}
+
+header .main-nav ul .other .mega-nav li:hover:after {
+  display: block;
+}
+
+header .main-nav .other:hover .mega-nav {
+  opacity: 1;
+  z-index: 100;
+  top: 100%;
+}
+
+@media (max-width: 767px) {
+  header .main-nav ul .other .mega-nav {
+    flex-direction: column;
+    gap: 0;
+    padding: 5px;
+  }
+
+  header .main-nav ul .other .mega-nav img {
+    max-width: 100%;
+    width: 40%;
+  }
+
+  header .main-nav ul .other .mega-nav ul {
+    margin-top: 0;
+  }
+
+  header .main-nav ul .other .mega-nav ul li {
+    padding: 0;
+    font-size: 14px;
+  }
+}
+
+/* Style Of Landing Section */
+.landing {
+  position: relative;
+  background-color: #fff;
+}
+
+/* Create Div Parent Of data Landing Section */
+.landing .title {
+  min-height: calc(100vh - 79px);
+  display: flex;
+  align-items: center;
+  padding-bottom: 120px;
+}
+
+/* Style Of Image */
+.landing .title img {
+  width: 600px;
+}
+
+.landing .title .text {
+  flex: 1;
+}
+
+@media (max-width: 991px) {
+  .landing .title .text {
+    text-align: center;
+  }
+}
+
+.landing .title .text h1 {
+  font-size: 40px;
+  margin: 0;
+  letter-spacing: -2px;
+}
+
+.landing .title .text p {
+  font-size: 24px;
+  line-height: 1.7;
+  margin: 5px 0 0;
+  color: #777;
+  max-width: 500px;
+}
+
+@media (max-width: 991px) {
+  .landing .title .text p {
+    margin: 10px auto;
+  }
+}
+
+/* Give Div Of Img Position raltive to move img up down by animation */
+.landing .title .img-land {
+  position: relative;
+  animation-name: land-img;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+/* Image In Small Screen */
+@media (max-width: 991px) {
+  .landing .title .img-land {
+    display: none;
+  }
+}
+
+/* Style To Create spical Background */
+.landing::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: var(--background-section);
+  left: 0;
+  top: -40px;
+  z-index: -1;
+  transform: skewY(-6deg);
+  transform-origin: top left;
+}
+
+/* Style Of Arraow Link */
+.landing a {
+  position: absolute;
+  left: 49%;
+  color: var(--main-color);
+  font-size: 35px;
+  animation-name: arrow-link;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+/* Style of Section Articles */
+.articles {
+  padding-top: var(--main-padding-top);
+  padding-bottom: var(--main-padding-bottom);
+}
+
+.articles > .container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 40px;
+}
+
+.articles .card {
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  transition: var(--main-transsion);
+  direction: rtl;
+}
+
+.articles .card:hover {
+  box-shadow: rgba(0, 0, 0, 0.5) 0px 3px 8px;
+  transform: scale(1.1, 1.1);
+}
+
+.articles .card img {
+  max-width: 100%;
+  border-radius: 5px;
+}
+
+.articles .card h4 {
+  padding: 20px;
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 2px;
+}
+.articles .card p {
+  margin: 0;
+  padding: 0 20px 20px;
+  font-size: 18px;
+  color: #787878;
+  border-bottom: 1px solid var(--background-section);
+}
+
+.articles .card button {
+  border: none;
+  background-color: var(--white);
+  padding: 20px;
+  font-family: "Cairo", sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+  color: var(--main-color);
+  cursor: pointer;
+}
+
+.articles .card i {
+  position: relative;
+  right: 30%;
+  color: var(--main-color);
+}
+
+.articles .card:hover i {
+  animation-name: arrow;
+  animation-duration: var(--main-transsion);
+  animation-iteration-count: infinite;
+}
